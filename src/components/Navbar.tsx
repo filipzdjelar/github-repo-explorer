@@ -1,25 +1,54 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
+  const links = [
+    { name: "React", link: "/react" },
+    { name: "Angular", link: "/angular" },
+    { name: "Vue", link: "/vue" },
+  ];
+
   const toggleNavbar = () => {
-    setIsNavOpen(!isNavOpen);
+    setIsNavOpen((prevIsNavOpen) => !prevIsNavOpen);
+  };
+
+  const handleLinkClick = () => {
+    if (isNavOpen === false) return;
+    setIsNavOpen(false);
   };
 
   return (
-    <header>
-      <h3>LOGO</h3>
+    <header className="header">
+      <Link to={"/"} className="logo">
+        REPO EXPLORER
+      </Link>
       <nav className={isNavOpen ? "responsive_nav" : ""}>
-        <a href="/#">Home</a>
-        <a href="/#">My work</a>
-        <a href="/#">Blog</a>
-        <a href="/#">About me</a>
-        <button className="nav-btn nav-close-btn" onClick={toggleNavbar}>
+        {links.map((link) => (
+          <Link
+            key={link.name}
+            to={`${link.link}`}
+            onClick={handleLinkClick}
+            className="nav-link"
+          >
+            {link.name}
+          </Link>
+        ))}
+
+        <button
+          className="nav-btn nav-close-btn"
+          onClick={toggleNavbar}
+          aria-label="Close navigation menu"
+        >
           &#x2715;
         </button>
       </nav>
-      <button className="nav-btn" onClick={toggleNavbar}>
+      <button
+        className="nav-btn"
+        onClick={toggleNavbar}
+        aria-label="Open navigation menu"
+      >
         &#x2630;
       </button>
     </header>
