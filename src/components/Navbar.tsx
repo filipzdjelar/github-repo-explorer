@@ -21,9 +21,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header className="header">
-      <Link to={"/"} className="logo">
-        REPO EXPLORER
-      </Link>
+      <Link to={"/"}>REPO EXPLORER</Link>
       <nav className={isNavOpen ? "responsive_nav" : ""}>
         {links.map((link) => (
           <Link

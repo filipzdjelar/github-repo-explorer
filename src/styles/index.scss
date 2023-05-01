@@ -1,27 +1,74 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
 
+/* Global styles */
+
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  @media only screen and (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+body {
   font-family: "Titillium Web", sans-serif;
+  font-size: 1rem;
+  color: #2c2828;
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+a {
+  color: #11beb6;
 }
 
 .main-container {
   max-width: 1230px;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 15px 20px 15px;
+  padding: 30px 15px;
 }
 
-//Variables
+/* Variables */
 
 $main-color: #29335c;
 $main-color-light: #5767aa;
 $secondary-color: #db2b39;
 $text-color: #eee;
 
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
 //Component styles
 
 @import "./common/navbar";
 @import "./common/footer";
+@import "./github-repo/repository-card";
+@import "./github-repo/badge";

@@ -1,5 +1,11 @@
+import TopRepositories from "../components/TopRepositories";
+
 const ReactPage = () => {
-  return <div>ReactPage</div>;
+  return (
+    <>
+      <TopRepositories />
+    </>
+  );
 };
 
 export default ReactPage;

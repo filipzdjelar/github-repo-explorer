@@ -1,0 +1,45 @@
+.repository-card {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  word-wrap: break-word;
+  &__name {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  &__metadata {
+    min-width: 200px;
+    & > span {
+      margin-right: 1rem;
+      font-weight: bold;
+      cursor: help;
+    }
+  }
+
+  @media only screen and (max-width: $breakpoint-lg) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.repository-card__info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.repository-card__title {
+  display: flex;
+  gap: 15px;
+}
+
+//
+
+.top-results__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

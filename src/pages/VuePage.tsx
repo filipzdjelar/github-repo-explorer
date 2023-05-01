@@ -1,5 +1,11 @@
+import TopRepositories from "../components/TopRepositories";
+
 const VuePage = () => {
-  return <div>VuePage</div>;
+  return (
+    <>
+      <TopRepositories />
+    </>
+  );
 };
 
 export default VuePage;

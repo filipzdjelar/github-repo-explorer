@@ -1,5 +1,11 @@
+import TopRepositories from "../components/TopRepositories";
+
 const AngularPage = () => {
-  return <div>AngularPage</div>;
+  return (
+    <>
+      <TopRepositories />
+    </>
+  );
 };
 
 export default AngularPage;
