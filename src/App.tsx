@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import VuePage from "./pages/VuePage";
 import Layout from "./components/Layout";
 import ReactPage from "./pages/ReactPage";
 import AngularPage from "./pages/AngularPage";
@@ -11,9 +10,8 @@ const App: React.FC = () => {
         <Layout>
           <Routes>
             <Route path="/" element={<p>landing</p>} />
-            <Route path="/react" element={<ReactPage />} />
-            <Route path="/angular" element={<AngularPage />} />
-            <Route path="/vue" element={<VuePage />} />
+            <Route path=":search" element={<ReactPage />} />
+            <Route path=":search/:id" element={<AngularPage />} />
           </Routes>
         </Layout>
       </Router>

@@ -2,13 +2,21 @@
   display: flex;
 
   button {
-    border: 1px solid #ccc;
-    background-color: #fff;
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
     padding: 0.5rem;
     margin: 0.5rem;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    color: #495057; /* text color */
+  }
+
+  &__item-selected {
+    button {
+      border: 2px solid #007bff; /* selected border color */
+      color: #007bff; /* selected text color */
+    }
   }
 
   &__list {
@@ -19,5 +27,10 @@
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  &__dots {
+    color: #dc3545; /* dots color */
+    align-items: center;
   }
 }

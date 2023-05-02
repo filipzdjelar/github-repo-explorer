@@ -48,6 +48,7 @@ a {
 
 .main-container {
   max-width: 1230px;
+  min-height: 75vh;
   width: 100%;
   margin: 0 auto;
   padding: 30px 15px;
@@ -73,3 +74,4 @@ $breakpoint-xl: 1200px;
 @import "./github-repo/repository-card";
 @import "./github-repo/badge";
 @import "./github-repo/pagination";
+@import "./common/spinner";

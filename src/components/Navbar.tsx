@@ -8,6 +8,7 @@ const Navbar: React.FC = () => {
     { name: "React", link: "/react" },
     { name: "Angular", link: "/angular" },
     { name: "Vue", link: "/vue" },
+    { name: "Node", link: "/node" },
   ];
 
   const toggleNavbar = () => {

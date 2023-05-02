@@ -39,7 +39,12 @@ const Pagination = ({
 
           if (typeof item === "number") {
             return (
-              <li key={index} className="pagination__item">
+              <li
+                key={index}
+                className={`${
+                  currentPage === item ? "pagination__item-selected" : ""
+                }`}
+              >
                 <button onClick={() => onPageChange(item)}>{item}</button>
               </li>
             );
