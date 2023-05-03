@@ -1,6 +1,6 @@
 import { useState, useRef, ReactNode } from "react";
 
-const Tooltip = ({
+const Tooltip: React.FC<TooltipProps> = ({
   children,
   tooltipContent,
   position,
@@ -9,7 +9,7 @@ const Tooltip = ({
   offsetX,
   minWidth,
   maxWidth,
-}: TooltipProps) => {
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClicked, setClick] = useState(false);
 

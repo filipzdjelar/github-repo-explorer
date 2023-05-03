@@ -1,4 +1,4 @@
-const Spinner = ({ variant }: SpinnerProps) => {
+const Spinner: React.FC<SpinnerProps> = ({ variant }) => {
   return (
     <div className="spinner-container">
       <div className={`spinner spinner__variant-${variant}`}></div>

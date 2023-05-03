@@ -1,4 +1,4 @@
-import usePagination, { DOTS } from "../hooks/usePagination";
+import usePagination, { DOTS } from "../../hooks/usePagination";
 
 interface PaginationProps {
   currentPage: number;
@@ -6,11 +6,11 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-const Pagination = ({
+const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
-}: PaginationProps) => {
+}) => {
   const paginationRange = usePagination({ totalPages, currentPage });
 
   const nextPage = () => {

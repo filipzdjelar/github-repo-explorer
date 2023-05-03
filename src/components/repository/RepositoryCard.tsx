@@ -1,28 +1,19 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import TopicBadges from "./TopicBadges";
-import Tooltip from "./Tooltip";
+import Tooltip from "../common/Tooltip";
+import { Repository } from "../../types/githubTypes";
 
 interface RepositoryCardProps {
-  name: string;
-  stars: number;
-  forks: number;
-  ownerName: string;
-  ownerAvatarUrl: string;
-  description: string;
-  topics: string[];
-  id: number;
+  repository: Repository;
+  isLinkActive: Boolean;
+  maxNumberOfTopicsShown?: number;
 }
 
 const RepositoryCard: React.FC<RepositoryCardProps> = ({
-  name,
-  stars,
-  forks,
-  ownerName,
-  ownerAvatarUrl,
-  description,
-  topics,
-  id,
+  repository,
+  isLinkActive,
+  maxNumberOfTopicsShown,
 }) => {
   const { search } = useParams();
 
@@ -31,17 +22,24 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({
       <section className="repository-card__info-section">
         <div className="repository-card__title">
           <img
-            src={ownerAvatarUrl}
-            alt={`${ownerName}'s avatar`}
+            src={repository.owner.avatar_url}
+            alt={`${repository.owner.login}'s avatar`}
             height={40}
             width={40}
           />
-          <Link to={`/${search}/${id}`}>
-            <h2 className="repository-card__name">{name}</h2>
-          </Link>
+          {isLinkActive ? (
+            <Link to={`/${search}/${repository.id}`}>
+              <h2 className="repository-card__name">{repository.full_name}</h2>
+            </Link>
+          ) : (
+            <h2 className="repository-card__name">{repository.full_name}</h2>
+          )}
         </div>
-        <p>{description}</p>
-        <TopicBadges topics={topics} maxNumberOfTopicsShown={8} />
+        <p>{repository.description}</p>
+        <TopicBadges
+          topics={repository.topics}
+          maxNumberOfTopicsShown={maxNumberOfTopicsShown}
+        />
       </section>
 
       <section className="repository-card__metadata">
@@ -52,9 +50,9 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({
             offsetY={5}
             offsetX={-20}
             minWidth={150}
-            tooltipContent={`This repository has ${stars} stargazers!`}
+            tooltipContent={`This repository has ${repository.stargazers_count} stargazers!`}
           >
-            &#11088; {stars}
+            &#11088; {repository.stargazers_count}
           </Tooltip>
         </span>
 
@@ -65,9 +63,9 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({
             offsetY={5}
             offsetX={-20}
             minWidth={150}
-            tooltipContent={`This repository has ${forks} forks!`}
+            tooltipContent={`This repository has ${repository.forks_count} forks!`}
           >
-            ⎇ {forks}
+            ⎇ {repository.forks_count}
           </Tooltip>
         </span>
       </section>

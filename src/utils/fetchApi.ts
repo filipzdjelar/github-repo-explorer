@@ -1,5 +1,3 @@
-const apiUrl = "https://api.github.com";
-
 interface ApiError extends Error {
   status?: number;
 }
@@ -9,7 +7,7 @@ export async function fetchApi<T>(
   endpoint: string,
   data?: object
 ): Promise<T> {
-  const url = `${apiUrl}/${endpoint}`;
+  const url = `${import.meta.env.VITE_API_BASE_URL}/${endpoint}`;
   const options: RequestInit = {
     method: method,
     headers: {

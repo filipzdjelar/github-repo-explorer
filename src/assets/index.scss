@@ -1,32 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
 @import "react-toastify/dist/ReactToastify.css";
 
-/* Variables */
+/* Base styles */
 
-$primary-color: #29335c;
-$background-color-primary: #f1faee;
-$background-color-secoundary: #f9f9f9;
-$link-color: #2a9d8f;
-$link-color-hover: #0f766a;
-$text-color-dark: #2c2828;
-$text-color-light: #eee;
-
-$border-color: #8d99ae;
-$light-green: #b7e4c7;
-$dark-green: #52796f;
-$red: #db2b39;
-
-$breakpoint-xs: 0;
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-
-//Transitions
-$ease: ease-in-out 0.4s;
-
-// Shadows
-$box-shadow: rgb(0 0 0 / 15%) 5px 5px 10px;
+@import "./styles/base/brakepoints";
+@import "./styles/base/variables";
 
 /* Global styles */
 
@@ -87,15 +65,26 @@ a {
   padding: 30px 15px;
 }
 
-//Component styles
+/* Component styles */
 
-@import "./common/navbar";
-@import "./common/footer";
-@import "./github-repo/repository-card";
-@import "./github-repo/badge";
-@import "./github-repo/pagination";
-@import "./common/spinner";
-@import "./common/tooltip";
-@import "./common/dropdown";
-@import "./common/search-bar";
-@import "./common/landing";
+/* Common */
+
+@import "./styles/common/dropdown";
+@import "./styles/common/pagination";
+@import "./styles/common/search-bar";
+@import "./styles/common/spinner";
+@import "./styles/common/tooltip";
+
+/* Layout */
+
+@import "./styles/layout/footer";
+@import "./styles/layout/navbar";
+
+/* Pages */
+
+@import "./styles/pages/landing";
+
+/* Repository */
+
+@import "./styles/repository/badge";
+@import "./styles/repository/repository-card";
