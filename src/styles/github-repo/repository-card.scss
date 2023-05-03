@@ -1,6 +1,7 @@
 .repository-card {
   width: 100%;
   border: 1px solid #ccc;
+  background-color: $background-color-secoundary;
   border-radius: 5px;
   padding: 1rem;
   display: flex;
@@ -13,10 +14,10 @@
 
   &__metadata {
     min-width: 200px;
+    display: flex;
     & > span {
       margin-right: 1rem;
       font-weight: bold;
-      cursor: help;
     }
   }
 

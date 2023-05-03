@@ -9,11 +9,12 @@ interface Repos {
 export async function getRepos(
   maxResultsPerPage: number,
   currentPage: number,
-  searchQuery?: string
+  sortBy: string,
+  searchQuery: string
 ): Promise<Repos> {
   const repos = await fetchApi<Repos>(
     HttpMethod.GET,
-    `search/repositories?q=${searchQuery}&sort=stars&order=desc&per_page=${maxResultsPerPage}&page=${currentPage}`
+    `search/repositories?q=${searchQuery}&sort=${sortBy}&order=desc&per_page=${maxResultsPerPage}&page=${currentPage}`
   );
   return repos;
 }

@@ -1,4 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+@import "react-toastify/dist/ReactToastify.css";
+
+/* Variables */
+
+$primary-color: #29335c;
+$background-color-primary: #f1faee;
+$background-color-secoundary: #f9f9f9;
+$link-color: #2a9d8f;
+$link-color-hover: #0f766a;
+$text-color-dark: #2c2828;
+$text-color-light: #eee;
+
+$border-color: #8d99ae;
+$light-green: #b7e4c7;
+$dark-green: #52796f;
+$red: #db2b39;
+
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+//Transitions
+$ease: ease-in-out 0.4s;
+
+// Shadows
+$box-shadow: rgb(0 0 0 / 15%) 5px 5px 10px;
 
 /* Global styles */
 
@@ -10,7 +38,7 @@
 
 html {
   font-size: 16px;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $breakpoint-md) {
     font-size: 13px;
   }
 }
@@ -18,8 +46,8 @@ html {
 body {
   font-family: "Titillium Web", sans-serif;
   font-size: 1rem;
-  color: #2c2828;
-  background-color: #fff;
+  color: $text-color-dark;
+  background-color: $background-color-primary;
 }
 
 h1 {
@@ -43,29 +71,21 @@ p {
 }
 
 a {
-  color: #11beb6;
+  color: $link-color;
+  text-decoration: none;
+  :hover {
+    text-decoration: underline;
+    color: $link-color-hover;
+  }
 }
 
 .main-container {
   max-width: 1230px;
-  min-height: 75vh;
+  min-height: 80vh;
   width: 100%;
   margin: 0 auto;
   padding: 30px 15px;
 }
-
-/* Variables */
-
-$main-color: #29335c;
-$main-color-light: #5767aa;
-$secondary-color: #db2b39;
-$text-color: #eee;
-
-$breakpoint-xs: 0;
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
 
 //Component styles
 
@@ -75,3 +95,5 @@ $breakpoint-xl: 1200px;
 @import "./github-repo/badge";
 @import "./github-repo/pagination";
 @import "./common/spinner";
+@import "./common/tooltip";
+@import "./common/dropdown";

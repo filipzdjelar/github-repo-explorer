@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import ReactPage from "./pages/ReactPage";
-import AngularPage from "./pages/AngularPage";
+import RepositoryDetails from "./components/RepositoryDetails";
+import TopRepositories from "./components/TopRepositories";
 
 const App: React.FC = () => {
   return (
@@ -10,8 +10,9 @@ const App: React.FC = () => {
         <Layout>
           <Routes>
             <Route path="/" element={<p>landing</p>} />
-            <Route path=":search" element={<ReactPage />} />
-            <Route path=":search/:id" element={<AngularPage />} />
+            <Route path=":search" element={<TopRepositories />} />
+            <Route path=":search/:id" element={<RepositoryDetails />} />
+            <Route path="*" element={<p>404</p>} />
           </Routes>
         </Layout>
       </Router>

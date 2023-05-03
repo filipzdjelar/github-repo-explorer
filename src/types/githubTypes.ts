@@ -1,4 +1,5 @@
 export interface Owner {
+  name: string;
   login: string;
   id: number;
   node_id: string;
@@ -20,6 +21,7 @@ export interface Owner {
 }
 
 export interface Repository {
+  topics: string[];
   id: number;
   node_id: string;
   name: string;

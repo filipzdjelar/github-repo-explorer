@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import TopicBadges from "./TopicBadges";
 
 interface RepositoryCardProps {
@@ -10,6 +10,7 @@ interface RepositoryCardProps {
   ownerAvatarUrl: string;
   description: string;
   topics: string[];
+  id: number;
 }
 
 const RepositoryCard: React.FC<RepositoryCardProps> = ({
@@ -20,7 +21,10 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({
   ownerAvatarUrl,
   description,
   topics,
+  id,
 }) => {
+  const { search } = useParams();
+
   return (
     <section className="repository-card">
       <section className="repository-card__info-section">
@@ -31,7 +35,7 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({
             height={40}
             width={40}
           />
-          <Link to={"/"}>
+          <Link to={`/${search}/${id}`}>
             <h2 className="repository-card__name">{name}</h2>
           </Link>
         </div>
