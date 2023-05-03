@@ -2,7 +2,6 @@
   position: relative;
   background: $background-color-secoundary;
   border: 1px solid $border-color;
-  max-width: 300px;
   text-transform: capitalize;
 
   &__list {
@@ -49,4 +48,5 @@
 .dropdown__top-section {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
 }

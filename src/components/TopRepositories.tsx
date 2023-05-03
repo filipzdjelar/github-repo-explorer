@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import RepositoryCard from "./RepositoryCard";
 import Pagination from "./Pagination";
-import { getRepos } from "../services/githubService";
+import { searchRepositories } from "../services/githubService";
 import Spinner, { SpinnerVariant } from "./Spinner";
 import { Repository } from "../types/githubTypes";
 import { toast } from "react-toastify";
@@ -11,24 +11,24 @@ import Dropdown from "./Dropdown";
 const TopRepositories = () => {
   const navigate = useNavigate();
   const { search } = useParams();
-  const maxResultsPerPage = 10;
-
+  const perPage = 10;
   const [results, setResults] = useState<Repository[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [sortBy, setSortBy] = useState(sortOptions[0]);
   const [loading, setLoading] = useState(false);
+  const [order, setOrder] = useState(orderOptions[0]);
 
   useEffect(() => {
     setLoading(true);
-    getRepos(maxResultsPerPage, currentPage, sortBy, search)
+    searchRepositories(perPage, currentPage, sortBy, order, search)
       .then((data) => {
         setResults(data.items);
         setTotalPages(
           // 1000 is maximum allowed number of items to fetch from github
           data.total_count <= 1000
-            ? Math.ceil(data.total_count / maxResultsPerPage)
-            : 1000 / maxResultsPerPage
+            ? Math.ceil(data.total_count / perPage)
+            : 1000 / perPage
         );
       })
       .catch((error) => {
@@ -36,7 +36,7 @@ const TopRepositories = () => {
         navigate("/");
       })
       .finally(() => setLoading(false));
-  }, [search, sortBy, currentPage]);
+  }, [search, sortBy, currentPage, order]);
 
   return (
     <div className="top-results__wrapper">
@@ -44,13 +44,21 @@ const TopRepositories = () => {
         <>
           {results.length > 0 ? (
             <>
-              <h3>Search results for : '{search}'</h3>
-              <Dropdown
-                title="Sorted by:"
-                onSelect={setSortBy}
-                initial={sortBy}
-                options={sortOptions}
-              />
+              <div className="top-results__header">
+                <h3>Search results for : '{search}'</h3>
+                <Dropdown
+                  title="Sorted by:"
+                  onSelect={setSortBy}
+                  initial={sortBy}
+                  options={sortOptions}
+                />
+                <Dropdown
+                  title="Order:"
+                  onSelect={setOrder}
+                  initial={order}
+                  options={orderOptions}
+                />
+              </div>
 
               {results.map((result: Repository) => {
                 return (
@@ -93,3 +101,5 @@ const TopRepositories = () => {
 export default TopRepositories;
 
 const sortOptions = ["stars", "forks"];
+
+const orderOptions = ["desc", "asc"];

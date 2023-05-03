@@ -1,4 +1,4 @@
-const apiUrl = "https://api.github.com"; // replace with your API endpoint
+const apiUrl = "https://api.github.com";
 
 interface ApiError extends Error {
   status?: number;

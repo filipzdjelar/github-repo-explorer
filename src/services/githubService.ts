@@ -2,20 +2,24 @@ import { Repository } from "../types/githubTypes";
 import { HttpMethod, fetchApi } from "../utils/fetchApi";
 
 interface Repos {
-  items: [];
+  items: Repository[];
   total_count: number;
 }
 
-export async function getRepos(
-  maxResultsPerPage: number,
+export async function searchRepositories(
+  perPage: number,
   currentPage: number,
   sortBy: string,
-  searchQuery: string
+  order: string,
+  searchQuery?: string
 ): Promise<Repos> {
-  const repos = await fetchApi<Repos>(
-    HttpMethod.GET,
-    `search/repositories?q=${searchQuery}&sort=${sortBy}&order=desc&per_page=${maxResultsPerPage}&page=${currentPage}`
-  );
+  let url = `search/repositories?sort=${sortBy}&order=${order}&per_page=${perPage}&page=${currentPage}`;
+
+  if (searchQuery && searchQuery.trim() !== "") {
+    url += `&q=${encodeURIComponent(searchQuery.trim())}`;
+  }
+
+  const repos = await fetchApi<Repos>(HttpMethod.GET, url);
   return repos;
 }
 

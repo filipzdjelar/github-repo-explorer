@@ -45,6 +45,7 @@ header {
       gap: 1.5rem;
       background-color: $primary-color;
       transition: 1s;
+      z-index: 2;
     }
 
     .responsive_nav {
