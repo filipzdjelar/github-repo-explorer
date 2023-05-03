@@ -12,7 +12,6 @@ You can run the development server by following these steps:
 
  git clone https://github.com/filipzdjelar/github-repo-explorer.git
 
-
 ```
 
 2. Navigate to folder directory:
@@ -20,7 +19,6 @@ You can run the development server by following these steps:
 ```bash
 
  cd github-repo-explorer
-
 
 ```
 
@@ -30,7 +28,6 @@ You can run the development server by following these steps:
 
  npm install
 
-
 ```
 
 4. Start the application using:
@@ -38,7 +35,6 @@ You can run the development server by following these steps:
 ```bash
 
  npm run dev
-
 
 ```
 
