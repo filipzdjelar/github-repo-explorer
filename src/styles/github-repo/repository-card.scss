@@ -35,6 +35,9 @@
 .repository-card__title {
   display: flex;
   gap: 15px;
+  img {
+    border: 1px solid $text-color-light;
+  }
 }
 
 //
@@ -47,11 +50,8 @@
 
 .top-results__header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  @media only screen and (max-width: $breakpoint-sm) {
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
-  }
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }

@@ -3,7 +3,7 @@
   background: $background-color-secoundary;
   border: 1px solid $border-color;
   text-transform: capitalize;
-
+  min-width: 180px;
   &__list {
     transition: max-height 0.6s ease-out;
     max-height: 0;

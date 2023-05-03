@@ -1,4 +1,4 @@
-export interface Owner {
+export interface User {
   name: string;
   login: string;
   id: number;
@@ -27,7 +27,7 @@ export interface Repository {
   name: string;
   full_name: string;
   private: boolean;
-  owner: Owner;
+  owner: User;
   html_url: string;
   description: string;
   fork: boolean;

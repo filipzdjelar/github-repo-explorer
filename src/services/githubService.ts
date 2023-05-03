@@ -1,4 +1,4 @@
-import { Repository } from "../types/githubTypes";
+import { Repository, User } from "../types/githubTypes";
 import { HttpMethod, fetchApi } from "../utils/fetchApi";
 
 interface Repos {
@@ -29,6 +29,14 @@ export async function getRepositoryById(
   const response = await fetchApi<Repository>(
     HttpMethod.GET,
     `repositories/${repositoryId}`
+  );
+  return response;
+}
+
+export async function getContributors(repositoryId: string): Promise<User[]> {
+  const response = await fetchApi<User[]>(
+    HttpMethod.GET,
+    `repositories/${repositoryId}/contributors?&per_page=10&page=1`
   );
   return response;
 }

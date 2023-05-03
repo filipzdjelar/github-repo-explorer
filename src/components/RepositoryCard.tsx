@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import TopicBadges from "./TopicBadges";
+import Tooltip from "./Tooltip";
 
 interface RepositoryCardProps {
   name: string;
@@ -44,8 +45,31 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({
       </section>
 
       <section className="repository-card__metadata">
-        <span title="Number of Stars">&#11088; {stars}</span>
-        <span title="Number of Forks">⎇ {forks}</span>
+        <span>
+          <Tooltip
+            position="bottom"
+            behavior="hover"
+            offsetY={5}
+            offsetX={-20}
+            minWidth={150}
+            tooltipContent={`This repository has ${stars} stargazers!`}
+          >
+            &#11088; {stars}
+          </Tooltip>
+        </span>
+
+        <span>
+          <Tooltip
+            position="bottom"
+            behavior="hover"
+            offsetY={5}
+            offsetX={-20}
+            minWidth={150}
+            tooltipContent={`This repository has ${forks} forks!`}
+          >
+            ⎇ {forks}
+          </Tooltip>
+        </span>
       </section>
     </section>
   );

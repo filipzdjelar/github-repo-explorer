@@ -46,6 +46,7 @@ const TopRepositories = () => {
             <>
               <div className="top-results__header">
                 <h3>Search results for : '{search}'</h3>
+
                 <Dropdown
                   title="Sorted by:"
                   onSelect={setSortBy}

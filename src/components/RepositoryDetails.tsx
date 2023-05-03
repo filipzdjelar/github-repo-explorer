@@ -1,26 +1,29 @@
 import { useEffect, useState } from "react";
-import { getRepositoryById } from "../services/githubService";
+import { getContributors, getRepositoryById } from "../services/githubService";
 import { useParams } from "react-router-dom";
 import Spinner, { SpinnerVariant } from "./Spinner";
-import { Repository } from "../types/githubTypes";
+import { Repository, User } from "../types/githubTypes";
 import TopicBadges from "./TopicBadges";
 import Tooltip from "./Tooltip";
+import { toast } from "react-toastify";
 
 const RepositoryDetails = () => {
   const { id } = useParams();
   const [result, setResult] = useState<Repository>();
   const [loading, setLoading] = useState(false);
+  const [contributors, setContributors] = useState<User[]>();
 
   useEffect(() => {
     if (!id) return;
 
     setLoading(true);
-    getRepositoryById(id ? id : "")
-      .then((data: Repository) => {
-        setResult(data);
-        console.log(result);
+
+    Promise.all([getRepositoryById(id), getContributors(id)])
+      .then(([repository, contributors]) => {
+        setResult(repository);
+        setContributors(contributors);
       })
-      .catch((error) => console.error("erorcinaaaaaa", error))
+      .catch((error) => toast.error(error.message))
       .finally(() => setLoading(false));
   }, [id]);
 
@@ -28,6 +31,11 @@ const RepositoryDetails = () => {
     <div>
       {!loading ? (
         <>
+          {contributors &&
+            contributors.map((contributor) => {
+              return <span key={contributor.id}>{contributor.login}</span>;
+            })}
+
           {result ? (
             <section className="repository-card">
               <section className="repository-card__info-section">
