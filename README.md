@@ -4,28 +4,48 @@ This is a React-based application that allows users to search for and view GitHu
 
 ## Installation
 
-You can run development server, by falowing this steps:
-
-```bash
+You can run the development server by following these steps:
 
 1. Clone this repository to your local machine:
 
-    git clone https://github.com/filipzdjelar/github-repo-explorer.git
+```bash
 
-2. Navigate to folder directory:
-
-    cd github-repo-explorer
-
-3. Run this command to install the necessary dependencies:
-
-   npm install
-
-4. Start the application using:
-
-   npm run dev
+ git clone https://github.com/filipzdjelar/github-repo-explorer.git
 
 
 ```
+
+2. Navigate to folder directory:
+
+```bash
+
+ cd github-repo-explorer
+
+
+```
+
+3. Run this command to install the necessary dependencies:
+
+```bash
+
+ npm install
+
+
+```
+
+4. Start the application using:
+
+```bash
+
+ npm run dev
+
+
+```
+
+## Live version
+
+You can check the live version of Application which is hosted on
+[Vercel](https://github-repo-explorer-dun.vercel.app/).
 
 ## Features
 
