@@ -5,15 +5,17 @@ import {
 } from "../../services/githubService";
 import { useParams } from "react-router-dom";
 import Spinner, { SpinnerVariant } from "../common/Spinner";
-import { Repository, User } from "../../types/githubTypes";
+import { Repository, GithubContributor } from "../../types/githubTypes";
 import { toast } from "react-toastify";
 import RepositoryCard from "../repository/RepositoryCard";
+import ContributorsSection from "../repository/ContributorsSection";
+import AdditionalDataComponent from "../repository/AdditionalDataComponent";
 
 const RepositoryDetails: React.FC = () => {
   const { id } = useParams();
   const [repository, setRepository] = useState<Repository>();
   const [loading, setLoading] = useState(false);
-  const [contributors, setContributors] = useState<User[]>();
+  const [contributors, setContributors] = useState<GithubContributor[]>();
 
   useEffect(() => {
     if (!id) return;
@@ -33,14 +35,14 @@ const RepositoryDetails: React.FC = () => {
     <>
       {!loading ? (
         <>
-          {contributors &&
-            contributors.map((contributor) => {
-              return <span key={contributor.id}>{contributor.login}</span>;
-            })}
-
           {repository && (
-            <RepositoryCard repository={repository} isLinkActive={false} />
+            <>
+              <RepositoryCard repository={repository} isLinkActive={false} />
+              <AdditionalDataComponent repository={repository} />
+            </>
           )}
+
+          {contributors && <ContributorsSection contributors={contributors} />}
         </>
       ) : (
         <div className="spinner__wrapper">

@@ -1,10 +1,5 @@
-import { Repository, User } from "../types/githubTypes";
+import { GithubContributor, Repos, Repository } from "../types/githubTypes";
 import { HttpMethod, fetchApi } from "../utils/fetchApi";
-
-interface Repos {
-  items: Repository[];
-  total_count: number;
-}
 
 export async function searchRepositories(
   perPage: number,
@@ -33,8 +28,10 @@ export async function getRepositoryById(
   return response;
 }
 
-export async function getContributors(repositoryId: string): Promise<User[]> {
-  const response = await fetchApi<User[]>(
+export async function getContributors(
+  repositoryId: string
+): Promise<GithubContributor[]> {
+  const response = await fetchApi<GithubContributor[]>(
     HttpMethod.GET,
     `repositories/${repositoryId}/contributors?&per_page=10&page=1`
   );
