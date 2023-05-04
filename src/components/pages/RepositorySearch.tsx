@@ -34,7 +34,7 @@ const RepositorySearch: React.FC = () => {
           );
         },
         (error) => {
-          toast.error(error);
+          toast.error(error.message);
           navigate("/");
         }
       )

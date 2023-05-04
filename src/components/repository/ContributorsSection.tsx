@@ -13,7 +13,7 @@ const ContributorsSection: React.FC<ContributorSEctionProps> = ({
       <h3>Top contributors:</h3>
       <section className="contributor__section">
         {contributors.map((contributor) => {
-          return <Contributor contributor={contributor} />;
+          return <Contributor key={contributor.id} contributor={contributor} />;
         })}
       </section>
     </>

@@ -3,7 +3,7 @@ import {
   getContributors,
   getRepositoryById,
 } from "../../services/githubService";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Spinner, { SpinnerVariant } from "../common/Spinner";
 import { Repository, GithubContributor } from "../../types/githubTypes";
 import { toast } from "react-toastify";
@@ -13,6 +13,7 @@ import AdditionalDataComponent from "../repository/AdditionalDataComponent";
 
 const RepositoryDetails: React.FC = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [repository, setRepository] = useState<Repository>();
   const [loading, setLoading] = useState(false);
   const [contributors, setContributors] = useState<GithubContributor[]>();
@@ -27,7 +28,10 @@ const RepositoryDetails: React.FC = () => {
         setRepository(repository);
         setContributors(contributors);
       })
-      .catch((error) => toast.error(error))
+      .catch((error) => {
+        toast.error(error.message);
+        navigate("/");
+      })
       .finally(() => setLoading(false));
   }, [id]);
 
