@@ -40,15 +40,13 @@
   }
 }
 
-//
-
-.top-results__wrapper {
+.repository-search__wrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.top-results__header {
+.repository-search__header {
   display: flex;
   align-items: center;
   flex-direction: column;

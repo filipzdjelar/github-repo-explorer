@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <>
       <ToastBar />
       <Header />
-      <main className="main-container min-h-screen">{children}</main>
+      <main className="main-container">{children}</main>
       <Footer />
     </>
   );

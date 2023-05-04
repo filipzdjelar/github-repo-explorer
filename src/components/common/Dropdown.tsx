@@ -26,7 +26,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     onSelect(option);
   };
 
-  const menuRef = useRef<HTMLDivElement>(null); // move inside component
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useOnClickOutside(menuRef, () => {
     setActive(false);

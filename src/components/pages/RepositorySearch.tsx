@@ -52,7 +52,7 @@ const RepositorySearch: React.FC = () => {
   };
 
   return (
-    <div className="top-results__wrapper">
+    <div className="repository-search__wrapper">
       {loading ? (
         <div className="spinner__wrapper">
           <Spinner variant={SpinnerVariant.LIGHT} />
@@ -61,7 +61,7 @@ const RepositorySearch: React.FC = () => {
         <>
           {repositories.length > 0 ? (
             <>
-              <div className="top-results__header">
+              <div className="repository-search__header">
                 <h3>Search results for : '{search}'</h3>
                 <Dropdown
                   title="Sorted by:"
